@@ -1,0 +1,30 @@
+﻿<Window x:Class="CatchShapes.RulesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CatchShapes"
+        mc:Ignorable="d"
+        Title="RulesWindow" Height="450" Width="550" ResizeMode="NoResize">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock FontSize="24" HorizontalAlignment="Center">Rules are simple:</TextBlock>
+            <TextBlock FontSize="24" HorizontalAlignment="Left">Green circle and red square increase score</TextBlock>
+            <TextBlock FontSize="24" HorizontalAlignment="Left">Red circle and green square decrease score</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Fill="Red" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="5"/>
+                <Rectangle Fill="Green" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="5" />
+                <TextBlock Margin="5" VerticalAlignment="Center" FontSize="24"> -1</TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Ellipse Fill="Green" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="5"/>
+                <Rectangle Fill="Red" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="5" />
+                <TextBlock Margin="5" VerticalAlignment="Center" FontSize="24"> +1</TextBlock>
+            </StackPanel>
+            <TextBlock FontSize="24" HorizontalAlignment="Left">Try to score the most you can in 20 seconds!!!</TextBlock>
+            <Grid>
+                <Button Click="Button_Click" Height="50" FontSize="24" Margin="20">Back to game</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

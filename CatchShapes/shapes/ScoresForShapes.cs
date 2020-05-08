@@ -9,9 +9,9 @@ namespace CatchShapes.shapes
         private static int redSquare = 1;
         private static int greenCircle = 1;
 
-        public static int RedCircle { get => redCircle; set => redCircle = value; }
-        public static int RedSquare { get => redSquare; set => redSquare = value; }
-        public static int GreenCircle { get => greenCircle; set => greenCircle = value; }
-        public static int GreenSquare { get => greenSquare; set => greenSquare = value; }
+        public static int RedCircle { get => redCircle; }
+        public static int RedSquare { get => redSquare; }
+        public static int GreenCircle { get => greenCircle; }
+        public static int GreenSquare { get => greenSquare; }
     }
 }

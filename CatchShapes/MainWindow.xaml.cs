@@ -31,6 +31,8 @@ namespace CatchShapes
         private DispatcherTimer timerTimeLeft = new DispatcherTimer();
         private Random random = new Random();
         private int score = 0;
+        private int difficulty = 1;
+        private int timeLeft;
 
         private int redCircles = 0;
         private int greenCircles = 0;
@@ -94,12 +96,12 @@ namespace CatchShapes
         private void ButtonPlay_Click(object sender, RoutedEventArgs e)
         {
             buttonPlay.IsEnabled = false;
+            sliderDifficulty.IsEnabled = false;
             timeLeft = 20;
+            difficulty = (int) sliderDifficulty.Value;
             startGame();
             timerTimeLeft.Start();
         }
-
-        private int timeLeft;
 
         private void timerTimeLeft_Tick(object sender, EventArgs e)
         {
@@ -135,12 +137,22 @@ namespace CatchShapes
             timerTimeLeft.Stop();
             MessageBox.Show("You scored: " + score.ToString());
             buttonPlay.IsEnabled = true;
+            sliderDifficulty.IsEnabled = true;
+            clear();
+        }
+
+        private void clear()
+        {
+            foreach (var item in shapes.ToList())
+            {
+                (item as MyShape).delete();
+            }
         }
 
         private void timerSpawner_Tick(object sender, EventArgs e)
         {
-            int minSpeed = 4;
-            int maxSpeed = 7;
+            int minSpeed = calculateMinSpeed();
+            int maxSpeed = calculateMaxSpeed();
             int maxSpawnY = 800 - 200 - 35;
             int kek = random.Next(4);
             switch (kek)
@@ -160,10 +172,42 @@ namespace CatchShapes
             }
         }
 
+        private int calculateMinSpeed()
+        {
+            switch (difficulty)
+            {
+                case 1:
+                    return 2;
+                case 2:
+                    return 4;
+                case 3:
+                    return 6;
+                default:            // never happens
+                    return 228;
+            }
+        }
+
+        private int calculateMaxSpeed()
+        {
+            switch (difficulty)
+            {
+                case 1:
+                    return 4;
+                case 2:
+                    return 7;
+                case 3:
+                    return 9;
+                default:            // never happens
+                    return 228;
+            }
+        }
+
         private void createShape(Type type, int y, int speed)
         {
             object o = Activator.CreateInstance(type, new object[] { new Thickness(y, -35, 0, 0), this, speed });
             shapes.Add((Movable)o);
         }
+
+        public int Difficulty { get => difficulty; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -25,7 +26,6 @@ namespace CatchShapes.shapes
         public MyShape(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            speed = 5;
             bottom = (int) mainWindow.Height - 35;
         }
 
